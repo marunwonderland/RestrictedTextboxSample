@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestrictedTextbox;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,18 +23,20 @@ namespace RestrictedTextboxSample
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBox1.DataSource = Enum.GetValues(typeof(RestrictedTextbox.RestrictedTextbox.RestrictType));
-            //comboBox1.SelectedIndexChanged += (s, ea) =>
-            //{
-            //    restrictedTextbox3.Restrict = (RestrictedTextbox.RestrictedTextbox.RestrictType)comboBox1.SelectedItem;
-            //    label3.Text = restrictedTextbox3.CapableRegexPattern;
-            //};
             comboBox1_SelectedIndexChanged(comboBox1, EventArgs.Empty);
-            //textBox2_TextChanged(textBox2, null);
+            restrictedTextbox_TextChanged(restrictedTextboxPt, null);
         }
 
-        private void restrictedTextbox6_TextChanged(object sender, EventArgs e)
+        private void restrictedTextbox_TextChanged(object sender, EventArgs e)
         {
-            restrictedTextboxText.CapableRegexPattern = restrictedTextbox6.Text;
+            restrictedTextboxText.CapableRegexPattern = restrictedTextboxPt.Text;
+
+            if (string.IsNullOrEmpty(restrictedTextboxText.ErrorMessage)== false)
+                restrictedTextboxPt.BackColor = Color.Red;
+            else
+                restrictedTextboxPt.BackColor = Color.White;
+            toolTip1.SetToolTip(restrictedTextboxPt, restrictedTextboxText.ErrorMessage);
+            toolTip1.Show(restrictedTextboxText.ErrorMessage, restrictedTextboxPt, 0, 20, 2000);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -46,15 +49,16 @@ namespace RestrictedTextboxSample
         {
             if (restrictedTextbox1.CapableRegexPattern == textBox1.Text)
                 return;
-            try
-            {
-                var regex = new Regex(textBox1.Text);
-            }
-            catch
-            {
-                return;
-            }
             restrictedTextbox1.CapableRegexPattern = textBox1.Text;
+
+
+            if (string.IsNullOrEmpty(restrictedTextbox1.ErrorMessage) == false)
+                textBox1.BackColor = Color.Red;
+            else
+                textBox1.BackColor = Color.White;
+            toolTip1.SetToolTip(textBox1, restrictedTextbox1.ErrorMessage);
+            toolTip1.Show(restrictedTextbox1.ErrorMessage, textBox1, 0, 20, 2000);
+
         }
     }
 }

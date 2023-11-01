@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.restrictedTextbox6 = new RestrictedTextbox.RestrictedTextbox();
+            this.components = new System.ComponentModel.Container();
+            this.restrictedTextboxPt = new RestrictedTextbox.RestrictedTextbox();
             this.restrictedTextboxText = new RestrictedTextbox.RestrictedTextbox();
             this.restrictedTextboxV = new RestrictedTextbox.RestrictedTextbox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -39,24 +40,33 @@
             this.restrictedTextboxC = new RestrictedTextbox.RestrictedTextbox();
             this.restrictedTextboxA = new RestrictedTextbox.RestrictedTextbox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextboxPt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextboxText)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextboxV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextbox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextboxC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextboxA)).BeginInit();
             this.SuspendLayout();
             // 
-            // restrictedTextbox6
+            // restrictedTextboxPt
             // 
-            this.restrictedTextbox6.CapableRegexPattern = ".*";
-            this.restrictedTextbox6.Location = new System.Drawing.Point(262, 65);
-            this.restrictedTextbox6.Margin = new System.Windows.Forms.Padding(4);
-            this.restrictedTextbox6.Name = "restrictedTextbox6";
-            this.restrictedTextbox6.Restrict = RestrictedTextbox.RestrictedTextbox.RestrictType.NoRestriction;
-            this.restrictedTextbox6.Size = new System.Drawing.Size(227, 22);
-            this.restrictedTextbox6.TabIndex = 4;
-            this.restrictedTextbox6.Text = "^([0-9]{0,3})(-[0-9]{0,4})?";
-            this.restrictedTextbox6.TrimEndChars = null;
-            this.restrictedTextbox6.TextChanged += new System.EventHandler(this.restrictedTextbox6_TextChanged);
+            this.restrictedTextboxPt.CapableRegexPattern = ".*";
+            this.restrictedTextboxPt.ErrorMessage = "";
+            this.restrictedTextboxPt.Location = new System.Drawing.Point(262, 65);
+            this.restrictedTextboxPt.Margin = new System.Windows.Forms.Padding(4);
+            this.restrictedTextboxPt.Name = "restrictedTextboxPt";
+            this.restrictedTextboxPt.Restrict = RestrictedTextbox.RestrictedTextbox.RestrictType.NoRestriction;
+            this.restrictedTextboxPt.Size = new System.Drawing.Size(227, 22);
+            this.restrictedTextboxPt.TabIndex = 4;
+            this.restrictedTextboxPt.Text = "^([0-9]{0,3})(-[0-9]{0,4})?";
+            this.restrictedTextboxPt.TrimEndChars = null;
+            this.restrictedTextboxPt.TextChanged += new System.EventHandler(this.restrictedTextbox_TextChanged);
             // 
             // restrictedTextboxText
             // 
             this.restrictedTextboxText.CapableRegexPattern = "^([0-9]{0,3})(-[0-9]{0,4})?";
+            this.restrictedTextboxText.ErrorMessage = "";
             this.restrictedTextboxText.Location = new System.Drawing.Point(36, 65);
             this.restrictedTextboxText.Margin = new System.Windows.Forms.Padding(4);
             this.restrictedTextboxText.Name = "restrictedTextboxText";
@@ -68,6 +78,7 @@
             // restrictedTextboxV
             // 
             this.restrictedTextboxV.CapableRegexPattern = "([0-9]+\\.?)*[0-9]*";
+            this.restrictedTextboxV.ErrorMessage = "";
             this.restrictedTextboxV.Location = new System.Drawing.Point(36, 169);
             this.restrictedTextboxV.Margin = new System.Windows.Forms.Padding(4);
             this.restrictedTextboxV.Name = "restrictedTextboxV";
@@ -91,6 +102,7 @@
             // restrictedTextbox1
             // 
             this.restrictedTextbox1.CapableRegexPattern = "[0-9]";
+            this.restrictedTextbox1.ErrorMessage = "";
             this.restrictedTextbox1.Location = new System.Drawing.Point(36, 13);
             this.restrictedTextbox1.Margin = new System.Windows.Forms.Padding(4);
             this.restrictedTextbox1.Name = "restrictedTextbox1";
@@ -132,6 +144,7 @@
             // restrictedTextboxC
             // 
             this.restrictedTextboxC.CapableRegexPattern = "^[0-9]{0,4}";
+            this.restrictedTextboxC.ErrorMessage = "";
             this.restrictedTextboxC.Location = new System.Drawing.Point(36, 221);
             this.restrictedTextboxC.Margin = new System.Windows.Forms.Padding(4);
             this.restrictedTextboxC.Name = "restrictedTextboxC";
@@ -143,6 +156,7 @@
             // restrictedTextboxA
             // 
             this.restrictedTextboxA.CapableRegexPattern = "[A-Za-z]";
+            this.restrictedTextboxA.ErrorMessage = "";
             this.restrictedTextboxA.Location = new System.Drawing.Point(36, 114);
             this.restrictedTextboxA.Margin = new System.Windows.Forms.Padding(4);
             this.restrictedTextboxA.Name = "restrictedTextboxA";
@@ -159,13 +173,20 @@
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // toolTip1
+            // 
+            this.toolTip1.AutomaticDelay = 50;
+            this.toolTip1.AutoPopDelay = 5000;
+            this.toolTip1.InitialDelay = 50;
+            this.toolTip1.ReshowDelay = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(709, 450);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.restrictedTextbox6);
+            this.Controls.Add(this.restrictedTextboxPt);
             this.Controls.Add(this.restrictedTextboxText);
             this.Controls.Add(this.restrictedTextboxV);
             this.Controls.Add(this.comboBox1);
@@ -178,6 +199,12 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextboxPt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextboxText)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextboxV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextbox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextboxC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.restrictedTextboxA)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,7 +212,7 @@
 
         #endregion
 
-        private RestrictedTextbox.RestrictedTextbox restrictedTextbox6;
+        private RestrictedTextbox.RestrictedTextbox restrictedTextboxPt;
         private RestrictedTextbox.RestrictedTextbox restrictedTextboxText;
         private RestrictedTextbox.RestrictedTextbox restrictedTextboxV;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -196,6 +223,7 @@
         private RestrictedTextbox.RestrictedTextbox restrictedTextboxC;
         private RestrictedTextbox.RestrictedTextbox restrictedTextboxA;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
